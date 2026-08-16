@@ -69,6 +69,30 @@
   var SVGNS = "http://www.w3.org/2000/svg";
   function pubHref(slug) { return "publications.html?topic=" + encodeURIComponent(slug); }
 
+  /* =================================================================
+     Landing-page project graph. Larger "direction" circles each span
+     several projects and are sized by how many; smaller circles are the
+     individual projects. Every project slug matches a projects.html id.
+     A project may sit under more than one direction (shared node).
+     ================================================================= */
+  var GRAPH = [
+    { slug: "gsp", label: "Graph Signal Processing", projects: [
+      { slug: "graph-signals", label: "Time-Varying Graph Signals" },
+      { slug: "cancer-genomics", label: "Cancer Genomics" }
+    ]},
+    { slug: "tda", label: "Topological Data Analysis", projects: [
+      { slug: "cancer-genomics", label: "Cancer Genomics" }
+    ]},
+    { slug: "bayesian", label: "Bayesian Learning", projects: [
+      { slug: "efficient-dl", label: "Efficient Deep Learning" },
+      { slug: "bayesian-uncertainty", label: "Bayesian Uncertainty" }
+    ]},
+    { slug: "heavy-tails", label: "Heavy-Tailed Statistics", projects: [
+      { slug: "financial-risk", label: "Financial Risk" }
+    ]}
+  ];
+  function projHref(slug) { return "projects.html#" + slug; }
+
   /* ---- Black swan glyph (shared by graph node, demo card, canvas) ---- */
   var SWAN_BODY = "M24 39 C27 34.5 33 32.8 39 33 C46 33.2 51.5 31.8 55.5 28.8 C57.8 27.2 59.3 28.2 58.6 30.6 C57.2 35.4 53.5 41 48 43.8 C43.5 46 37.5 46.6 32.5 46.2 C27.5 45.7 24.7 43.3 24 39 Z";
   var SWAN_NECK = "M27.5 38.5 C20.5 34.5 26.5 27.5 23.5 22 C22.2 19.5 20.8 17.2 20.3 15.4";
@@ -82,34 +106,49 @@
       '<path d="' + SWAN_BEAK + '"/></svg>';
   }
 
-  /* ---- Research graph (desktop): HTML nodes over an SVG edge layer ---- */
+  /* ---- Research graph (desktop): sized "direction" circles on an inner
+         ring, each fanning out to its smaller project circles ---- */
+  function dirSize(count) { return 40 + count * 14; }   // 1 → 54px, 2 → 68px
+  var PROJ_SIZE = 20;
+
   function renderGraph(el) {
     var cx = 50, cy = 50;
-    var Rx = 29, Ry = 31;     // main ring radii (% of container)
-    var Rx2 = 45, Ry2 = 46;   // sub ring radii
-    var n = DIRECTIONS.length;
-    var nodes = [{ x: cx, y: cy, label: "Research", kind: "hub" }];
-    var edges = [];
+    var IRx = 17, IRy = 19;   // inner ring (directions)
+    var ORx = 36, ORy = 39;   // outer ring (projects)
+    var D = GRAPH.length;
+    var byId = {};            // slug -> node (dedupes shared projects)
+    var nodes = [], edges = [];
 
-    DIRECTIONS.forEach(function (d, i) {
-      var base = -90 + i * (360 / n);
-      var a = base * Math.PI / 180;
-      var mx = cx + Rx * Math.cos(a);
-      var my = cy + Ry * Math.sin(a);
-      nodes.push({ x: mx, y: my, label: d.label, slug: d.slug, dir: d.slug, kind: "main" });
-      edges.push({ x1: cx, y1: cy, x2: mx, y2: my, dir: d.slug });
+    function add(nd) {
+      if (byId[nd.slug]) return byId[nd.slug];
+      byId[nd.slug] = nd; nodes.push(nd); return nd;
+    }
 
-      var m = d.subs.length;
-      // the top fan (i=0) lines its pills up horizontally, so it needs wider angles
-      var spacing = m > 4 ? 11 : (i === 0 ? 21 : 17);
-      d.subs.forEach(function (s, j) {
-        var aa = (base + (j - (m - 1) / 2) * spacing) * Math.PI / 180;
-        var stagger = m > 3 ? (j % 2 ? 4.5 : -3) : 0;
-        var sx = cx + (Rx2 + stagger) * Math.cos(aa);
-        var sy = cy + (Ry2 + stagger) * Math.sin(aa);
-        nodes.push({ x: sx, y: sy, label: s.label, slug: s.slug, dir: d.slug, kind: "sub", swan: s.swan });
-        edges.push({ x1: mx, y1: my, x2: sx, y2: sy, dir: d.slug });
+    GRAPH.forEach(function (dir, i) {
+      var theta = -90 + i * (360 / D);
+      var a = theta * Math.PI / 180;
+      add({
+        slug: dir.slug, label: dir.label, kind: "dir", count: dir.projects.length,
+        href: projHref(dir.projects[0].slug),
+        x: cx + IRx * Math.cos(a), y: cy + IRy * Math.sin(a)
       });
+
+      var k = dir.projects.length;
+      dir.projects.forEach(function (p, j) {
+        if (!byId[p.slug]) {
+          var aa = (theta + (j - (k - 1) / 2) * 24) * Math.PI / 180;
+          add({
+            slug: p.slug, label: p.label, kind: "proj", href: projHref(p.slug),
+            x: cx + ORx * Math.cos(aa), y: cy + ORy * Math.sin(aa)
+          });
+        }
+        edges.push({ a: dir.slug, b: p.slug });
+      });
+    });
+
+    // faint ring tying the directions together into one graph
+    GRAPH.forEach(function (dir, i) {
+      edges.push({ a: dir.slug, b: GRAPH[(i + 1) % D].slug, ring: true });
     });
 
     var svg = document.createElementNS(SVGNS, "svg");
@@ -118,18 +157,27 @@
     svg.setAttribute("preserveAspectRatio", "none");
     svg.setAttribute("aria-hidden", "true");
     edges.forEach(function (e) {
+      var A = byId[e.a], B = byId[e.b];
       var ln = document.createElementNS(SVGNS, "line");
-      ln.setAttribute("x1", e.x1); ln.setAttribute("y1", e.y1);
-      ln.setAttribute("x2", e.x2); ln.setAttribute("y2", e.y2);
-      ln.setAttribute("data-dir", e.dir);
+      ln.setAttribute("x1", A.x); ln.setAttribute("y1", A.y);
+      ln.setAttribute("x2", B.x); ln.setAttribute("y2", B.y);
+      ln.setAttribute("data-a", e.a); ln.setAttribute("data-b", e.b);
+      if (e.ring) ln.setAttribute("data-ring", "1");
       ln.setAttribute("vector-effect", "non-scaling-stroke");
       svg.appendChild(ln);
     });
     el.appendChild(svg);
 
-    function focusDir(slug) {
+    function focus(slug) {
       el.classList.add("is-focus");
-      el.querySelectorAll('[data-dir="' + slug + '"]').forEach(function (m) { m.classList.add("is-hot"); });
+      var related = {}; related[slug] = true;
+      el.querySelectorAll("line:not([data-ring])").forEach(function (ln) {
+        var a = ln.getAttribute("data-a"), b = ln.getAttribute("data-b");
+        if (a === slug || b === slug) { ln.classList.add("is-hot"); related[a] = true; related[b] = true; }
+      });
+      el.querySelectorAll(".rg-node").forEach(function (nd) {
+        if (related[nd.getAttribute("data-slug")]) nd.classList.add("is-hot");
+      });
     }
     function clearFocus() {
       el.classList.remove("is-focus");
@@ -137,58 +185,55 @@
     }
 
     nodes.forEach(function (nd) {
-      var node;
-      if (nd.kind === "hub") {
-        node = document.createElement("div");
-      } else {
-        node = document.createElement("a");
-        node.href = pubHref(nd.slug);
-        node.setAttribute("data-dir", nd.dir);
-        node.addEventListener("mouseenter", function () { focusDir(nd.dir); });
-        node.addEventListener("mouseleave", clearFocus);
-        node.addEventListener("focus", function () { focusDir(nd.dir); });
-        node.addEventListener("blur", clearFocus);
-      }
+      var node = document.createElement("a");
+      node.href = nd.href;
+      node.setAttribute("data-slug", nd.slug);
       node.className = "rg-node rg-node--" + nd.kind;
       node.style.left = nd.x + "%";
       node.style.top = nd.y + "%";
+      node.addEventListener("mouseenter", function () { focus(nd.slug); });
+      node.addEventListener("mouseleave", clearFocus);
+      node.addEventListener("focus", function () { focus(nd.slug); });
+      node.addEventListener("blur", clearFocus);
 
-      var pill = document.createElement("span");
-      pill.className = "rg-node__pill";
-      if (nd.swan) {
-        pill.innerHTML = swanSVG(16) + "<span>" + nd.label + "</span>";
-      } else {
-        pill.textContent = nd.label;
+      var dot = document.createElement("span");
+      dot.className = "rg-node__dot";
+      var size = nd.kind === "dir" ? dirSize(nd.count) : PROJ_SIZE;
+      dot.style.width = size + "px";
+      dot.style.height = size + "px";
+      if (!reducedMotion) {
+        dot.style.animationDuration = (6 + Math.random() * 3).toFixed(2) + "s";
+        dot.style.animationDelay = (-Math.random() * 7).toFixed(2) + "s";
       }
-      if (nd.kind !== "hub" && !reducedMotion) {
-        pill.style.animationDuration = (6 + Math.random() * 3).toFixed(2) + "s";
-        pill.style.animationDelay = (-Math.random() * 7).toFixed(2) + "s";
-      }
-      node.appendChild(pill);
+      var label = document.createElement("span");
+      label.className = "rg-node__label";
+      label.textContent = nd.label;
+
+      node.appendChild(dot);
+      node.appendChild(label);
       el.appendChild(node);
     });
   }
 
-  /* ---- Research list (mobile / no-graph fallback) ---- */
+  /* ---- Project list (mobile / no-graph fallback) ---- */
   function renderList(el) {
-    DIRECTIONS.forEach(function (d) {
+    GRAPH.forEach(function (dir) {
       var group = document.createElement("div");
       group.className = "rl-group";
 
       var main = document.createElement("a");
       main.className = "rl-main";
-      main.href = pubHref(d.slug);
-      main.textContent = d.label;
+      main.href = projHref(dir.projects[0].slug);
+      main.textContent = dir.label;
       group.appendChild(main);
 
       var subs = document.createElement("div");
       subs.className = "rl-subs";
-      d.subs.forEach(function (s) {
+      dir.projects.forEach(function (p) {
         var chip = document.createElement("a");
         chip.className = "rl-sub";
-        chip.href = pubHref(s.slug);
-        if (s.swan) chip.innerHTML = swanSVG(14) + "<span>" + s.label + "</span>";
-        else chip.textContent = s.label;
+        chip.href = projHref(p.slug);
+        chip.textContent = p.label;
         subs.appendChild(chip);
       });
       group.appendChild(subs);
