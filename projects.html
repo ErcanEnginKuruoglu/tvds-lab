@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — TVDS Group</title>
+  <meta name="description" content="Flagship projects of the Time-Varying Data Science Group at Tsinghua SIGS: time-varying graph signals, efficient deep learning, topological cancer genomics, heavy-tailed financial risk, and Bayesian uncertainty — with selected publications." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='8' cy='10' r='3' fill='%2336506e'/%3E%3Ccircle cx='24' cy='8' r='3' fill='%2346607e'/%3E%3Ccircle cx='16' cy='24' r='3' fill='%235e7c97'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="brand">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M8 10 24 8 16 24Z" stroke="#36506e" stroke-width="1.4" fill="none" opacity=".5"/>
+          <circle cx="8" cy="10" r="3.2" fill="#36506e"/><circle cx="24" cy="8" r="3.2" fill="#46607e"/><circle cx="16" cy="24" r="3.2" fill="#5e7c97"/>
+        </svg>
+        <span>TVDS Group<span class="brand__sub">Tsinghua SIGS</span></span>
+      </a>
+      <button class="nav__toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="professor.html">Professor</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="people.html">People</a></li>
+        <li><a href="professor.html#join">Join Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="pagehead">
+    <div class="container pagehead__inner">
+      <h1>Projects</h1>
+      <p>A closer look at the flagship efforts of the Time-Varying Data Science Group — each led by our students and postdocs, with selected peer-reviewed outputs. For the complete record, see the <a href="publications.html">publications</a>.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- ============ 1. Time-Varying Graph Signals ============ -->
+      <article class="project reveal">
+        <div class="project__body">
+          <p class="section__eyebrow">Graph Signal Processing</p>
+          <h2 id="graph-signals">Time-Varying Graph Signals</h2>
+          <p class="project__lead">
+            Real networks — sensor grids, markets, brains — carry signals on nodes <em>and</em>
+            edges whose statistics drift over time. We build online estimators and adaptive graph
+            filters that track these signals as they evolve, and pair them with large language
+            models for forecasting on time-varying graphs.
+          </p>
+          <p class="project__people"><b>Researchers:</b> Yi Yan · Dayu Qin</p>
+          <span class="project__meta-label">Selected outputs</span>
+          <div class="project__highlights">
+            <a class="hl" href="https://doi.org/10.1109/TSIPN.2025.3536084" target="_blank" rel="noopener">
+              <span class="hl__title">Adaptive Joint Estimation of Temporal Vertex and Edge Signals</span>
+              <span class="hl__meta">IEEE Trans. Signal &amp; Information Processing over Networks, vol. 11, 2025 · <span class="hl__cue">View paper →</span></span>
+            </a>
+            <a class="hl" href="https://doi.org/10.1609/aaai.v39i28.35292" target="_blank" rel="noopener">
+              <span class="hl__title">LLM-based Online Prediction of Time-varying Graph Signals</span>
+              <span class="hl__meta">AAAI Conference on Artificial Intelligence, 2025 · <span class="hl__cue">View paper →</span></span>
+            </a>
+          </div>
+        </div>
+        <figure class="demo project__media">
+          <div class="demo__frame">
+            <svg viewBox="0 0 360 200" role="img" aria-label="A small network with a signal wave flowing across its edges">
+              <g stroke="#c4ccd6" stroke-width="1.6" fill="none">
+                <line x1="70" y1="60" x2="150" y2="40"/>
+                <line x1="150" y1="40" x2="250" y2="55"/>
+                <line x1="250" y1="55" x2="300" y2="120"/>
+                <line x1="300" y1="120" x2="205" y2="150"/>
+                <line x1="205" y1="150" x2="95" y2="140"/>
+                <line x1="95" y1="140" x2="70" y2="60"/>
+                <line x1="150" y1="40" x2="205" y2="150"/>
+                <line x1="250" y1="55" x2="205" y2="150"/>
+              </g>
+              <path class="d-flow" d="M18 180 Q58 160 98 180 T178 180 T258 180 T342 180" stroke="#5e7c97" stroke-width="2.4" fill="none"/>
+              <g fill="#36506e">
+                <circle cx="70" cy="60" r="7" class="d-pulse"/>
+                <circle cx="150" cy="40" r="7"/>
+                <circle cx="250" cy="55" r="7" class="d-pulse2"/>
+                <circle cx="300" cy="120" r="7"/>
+                <circle cx="205" cy="150" r="7" class="d-pulse"/>
+                <circle cx="95" cy="140" r="7"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption>A signal propagating over a time-varying graph — nodes and edges tracked jointly as the network changes.</figcaption>
+        </figure>
+      </article>
+
+      <!-- ============ 2. Efficient Deep Learning ============ -->
+      <article class="project reveal project--flip">
+        <div class="project__body">
+          <p class="section__eyebrow">Bayesian Model Selection</p>
+          <h2 id="efficient-dl">Efficient Deep Learning</h2>
+          <p class="project__lead">
+            Big networks are wasteful. Using reversible-jump MCMC and simulated annealing, we let
+            a Bayesian search decide how large a model needs to be — pruning weights and sizing
+            architectures automatically, so systems stay parameter-efficient without hand-tuning
+            or accuracy loss.
+          </p>
+          <p class="project__people"><b>Researchers:</b> Peter Marsh</p>
+          <span class="project__meta-label">Selected outputs</span>
+          <div class="project__highlights">
+            <a class="hl" href="https://doi.org/10.1109/JSTSP.2024.3428355" target="_blank" rel="noopener">
+              <span class="hl__title">Optimized Parameter-Efficient Deep Learning Systems via Reversible Jump Simulated Annealing</span>
+              <span class="hl__meta">IEEE Journal of Selected Topics in Signal Processing, vol. 18, 2024 · <span class="hl__cue">View paper →</span></span>
+            </a>
+          </div>
+        </div>
+        <figure class="demo project__media">
+          <div class="demo__frame">
+            <svg viewBox="0 0 360 200" role="img" aria-label="A neural network being pruned — many weak connections fade while a few strong ones remain">
+              <g stroke="#c9d0d9" stroke-width="1.3" fill="none" class="d-fade">
+                <line x1="90" y1="55" x2="185" y2="90"/><line x1="90" y1="55" x2="185" y2="140"/><line x1="90" y1="55" x2="185" y2="175"/>
+                <line x1="90" y1="100" x2="185" y2="40"/><line x1="90" y1="100" x2="185" y2="140"/>
+                <line x1="90" y1="145" x2="185" y2="40"/><line x1="90" y1="145" x2="185" y2="90"/><line x1="90" y1="145" x2="185" y2="175"/>
+                <line x1="185" y1="40" x2="280" y2="135"/><line x1="185" y1="90" x2="280" y2="135"/>
+                <line x1="185" y1="140" x2="280" y2="80"/><line x1="185" y1="175" x2="280" y2="80"/>
+              </g>
+              <g stroke="#36506e" stroke-width="2.2" fill="none">
+                <line x1="90" y1="55" x2="185" y2="40"/>
+                <line x1="90" y1="100" x2="185" y2="90"/>
+                <line x1="90" y1="100" x2="185" y2="175"/>
+                <line x1="90" y1="145" x2="185" y2="140"/>
+                <line x1="185" y1="40" x2="280" y2="80"/>
+                <line x1="185" y1="90" x2="280" y2="80"/>
+                <line x1="185" y1="140" x2="280" y2="135"/>
+                <line x1="185" y1="175" x2="280" y2="135"/>
+              </g>
+              <g fill="#36506e">
+                <circle cx="90" cy="55" r="7"/><circle cx="90" cy="100" r="7"/><circle cx="90" cy="145" r="7"/>
+                <circle cx="185" cy="40" r="7"/><circle cx="185" cy="90" r="7"/><circle cx="185" cy="140" r="7"/><circle cx="185" cy="175" r="7"/>
+                <circle cx="280" cy="80" r="7"/><circle cx="280" cy="135" r="7"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Bayesian pruning: weak connections (grey) are removed while a compact, strong subnetwork (blue) survives.</figcaption>
+        </figure>
+      </article>
+
+      <!-- ============ 3. Topological Cancer Genomics ============ -->
+      <article class="project reveal">
+        <div class="project__body">
+          <p class="section__eyebrow">Topological Data Analysis</p>
+          <h2 id="cancer-genomics">Topological Cancer Genomics</h2>
+          <p class="project__lead">
+            Genes act in networks, not in isolation. We bring graph and topological signal
+            processing to gene co-expression networks — using tools like HodgeRank to prioritise
+            cancer-driver genes and expose stage-, subtype-, and pathway-specific structure that
+            single-gene expression misses.
+          </p>
+          <p class="project__people"><b>Researchers:</b> Katie · Yutong Jiang</p>
+          <span class="project__meta-label">Selected outputs</span>
+          <div class="project__highlights">
+            <a class="hl" href="https://doi.org/10.1109/CAI64502.2025.00078" target="_blank" rel="noopener">
+              <span class="hl__title">Prioritizing Cancer Genes Using HodgeRank Reveals Critical Pathways in Cancer Progression</span>
+              <span class="hl__meta">IEEE Conference on Artificial Intelligence (CAI), 2025 · <span class="hl__cue">View paper →</span></span>
+            </a>
+            <a class="hl" href="https://arxiv.org/abs/2311.06747" target="_blank" rel="noopener">
+              <span class="hl__title">Graph Frequency Features of Cancer Gene Co-Expression Networks</span>
+              <span class="hl__meta">Preprint, 2023 (arXiv:2311.06747) · <span class="hl__cue">View paper →</span></span>
+            </a>
+          </div>
+        </div>
+        <figure class="demo project__media">
+          <div class="demo__frame">
+            <svg viewBox="0 0 360 200" role="img" aria-label="A gene co-expression network with a few top-ranked hub genes highlighted">
+              <g stroke="#c4ccd6" stroke-width="1.4" fill="none">
+                <line x1="60" y1="55" x2="120" y2="40"/><line x1="120" y1="40" x2="180" y2="60"/>
+                <line x1="180" y1="60" x2="250" y2="45"/><line x1="250" y1="45" x2="300" y2="80"/>
+                <line x1="60" y1="55" x2="90" y2="110"/><line x1="90" y1="110" x2="160" y2="120"/>
+                <line x1="160" y1="120" x2="180" y2="60"/><line x1="160" y1="120" x2="230" y2="110"/>
+                <line x1="230" y1="110" x2="250" y2="45"/><line x1="230" y1="110" x2="300" y2="150"/>
+                <line x1="90" y1="110" x2="120" y2="165"/><line x1="120" y1="165" x2="210" y2="170"/>
+                <line x1="210" y1="170" x2="160" y2="120"/><line x1="210" y1="170" x2="300" y2="150"/>
+                <line x1="300" y1="80" x2="300" y2="150"/>
+              </g>
+              <g fill="#8fa6bd">
+                <circle cx="60" cy="55" r="6"/><circle cx="120" cy="40" r="6"/><circle cx="250" cy="45" r="6"/>
+                <circle cx="300" cy="80" r="6"/><circle cx="90" cy="110" r="6"/><circle cx="120" cy="165" r="6"/>
+                <circle cx="300" cy="150" r="6"/><circle cx="210" cy="170" r="6"/>
+              </g>
+              <!-- top-ranked hubs -->
+              <g fill="none" stroke="#36506e" stroke-width="1.6">
+                <circle cx="180" cy="60" r="15" class="d-pulse"/>
+                <circle cx="160" cy="120" r="15" class="d-pulse2"/>
+                <circle cx="230" cy="110" r="15" class="d-pulse"/>
+              </g>
+              <g fill="#36506e">
+                <circle cx="180" cy="60" r="9"/><circle cx="160" cy="120" r="9"/><circle cx="230" cy="110" r="9"/>
+              </g>
+              <g fill="#ffffff" font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">
+                <text x="180" y="63">1</text><text x="160" y="123">2</text><text x="230" y="113">3</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Ranking driver genes: HodgeRank surfaces the highest-priority hub genes (1–3) within a co-expression network.</figcaption>
+        </figure>
+      </article>
+
+      <!-- ============ 4. Heavy Tails & Financial Risk ============ -->
+      <article class="project reveal project--flip">
+        <div class="project__body">
+          <p class="section__eyebrow">Heavy-Tailed Statistics</p>
+          <h2 id="financial-risk">Heavy Tails &amp; Financial Risk</h2>
+          <p class="project__lead">
+            Market crashes are not outliers to be discarded — they are the events that matter most.
+            We model them with α-stable graphical models and graph learning that detect and predict
+            systemic risk, treating heavy tails as a first-class part of the theory.
+          </p>
+          <p class="project__people"><b>Researchers:</b> Dayu Qin · Taurai Muvunza</p>
+          <span class="project__meta-label">Selected outputs</span>
+          <div class="project__highlights">
+            <a class="hl" href="https://doi.org/10.1109/CAI59869.2024.00127" target="_blank" rel="noopener">
+              <span class="hl__title">Graph Learning Based Financial Market Crash Identification and Prediction</span>
+              <span class="hl__meta">IEEE Conference on Artificial Intelligence (CAI), 2024 · <span class="hl__cue">View paper →</span></span>
+            </a>
+            <a class="hl" href="https://doi.org/10.1109/CAI59869.2024.00238" target="_blank" rel="noopener">
+              <span class="hl__title">Stable Probabilistic Graphical Models for Systemic Risk Estimation</span>
+              <span class="hl__meta">IEEE Conference on Artificial Intelligence (CAI), 2024 · <span class="hl__cue">View paper →</span></span>
+            </a>
+          </div>
+        </div>
+        <figure class="demo project__media">
+          <div class="demo__frame">
+            <svg viewBox="0 0 360 200" role="img" aria-label="A market price line rising and then crashing sharply past a risk threshold">
+              <line x1="18" y1="150" x2="342" y2="150" stroke="#d9c9b8" stroke-width="1" stroke-dasharray="4 5"/>
+              <text x="22" y="144" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#b39a7e">risk threshold</text>
+              <polyline class="d-draw" points="18,132 50,124 82,130 114,110 146,118 178,92 200,102 218,74 236,150 252,178 282,168 314,172 342,168"
+                        fill="none" stroke="#36506e" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+              <circle cx="252" cy="178" r="7" fill="#27405a" class="d-pulse"/>
+              <circle cx="252" cy="178" r="14" fill="none" stroke="#27405a" stroke-width="1.4" class="d-pulse2"/>
+            </svg>
+          </div>
+          <figcaption>A modelled crash: the price plunges through the risk threshold — the heavy-tailed event the model is built to anticipate.</figcaption>
+        </figure>
+      </article>
+
+      <!-- ============ 5. Bayesian Uncertainty ============ -->
+      <article class="project reveal">
+        <div class="project__body">
+          <p class="section__eyebrow">Bayesian Deep Learning</p>
+          <h2 id="bayesian-uncertainty">Bayesian Uncertainty</h2>
+          <p class="project__lead">
+            A prediction without a confidence interval can be dangerous. We design neural networks
+            that know what they don't know — through noise-injection training and minimax priors —
+            turning point estimates into calibrated uncertainty that widens where data is scarce.
+          </p>
+          <p class="project__people"><b>Researchers:</b> Xueqiong Yuan · Junping Hong</p>
+          <span class="project__meta-label">Selected outputs</span>
+          <div class="project__highlights">
+            <a class="hl" href="https://doi.org/10.3390/e27040340" target="_blank" rel="noopener">
+              <span class="hl__title">Minimax Bayesian Neural Networks</span>
+              <span class="hl__meta">Entropy, vol. 27, 2025 · <span class="hl__cue">View paper →</span></span>
+            </a>
+            <a class="hl" href="https://doi.org/10.1109/IJCNN64981.2025.11228576" target="_blank" rel="noopener">
+              <span class="hl__title">Uncertainty Quantification With Noise Injection in Neural Networks: A Bayesian Perspective</span>
+              <span class="hl__meta">International Joint Conference on Neural Networks (IJCNN), 2025 · <span class="hl__cue">View paper →</span></span>
+            </a>
+          </div>
+        </div>
+        <figure class="demo project__media">
+          <div class="demo__frame">
+            <svg viewBox="0 0 360 200" role="img" aria-label="A predictive mean curve with a shaded uncertainty band that grows where data is sparse">
+              <path class="d-band" fill="#5e7c97"
+                    d="M20 96 L60 82 L100 94 L140 78 L180 88 L220 68 L260 76 L300 64 L340 74
+                       L340 146 L300 128 L260 132 L220 116 L180 128 L140 122 L100 146 L60 142 L20 164 Z"/>
+              <polyline points="20,130 60,112 100,120 140,100 180,108 220,92 260,104 300,96 340,110"
+                        fill="none" stroke="#27405a" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+              <g fill="#1a2230">
+                <circle cx="60" cy="120" r="3.4"/><circle cx="100" cy="112" r="3.4"/><circle cx="140" cy="96" r="3.4"/>
+                <circle cx="180" cy="116" r="3.4"/><circle cx="220" cy="84" r="3.4"/><circle cx="260" cy="112" r="3.4"/>
+                <circle cx="300" cy="88" r="3.4"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Calibrated prediction: the shaded band is the model's uncertainty, widening toward the edges where data thins out.</figcaption>
+        </figure>
+      </article>
+
+      <p style="margin-top:44px;">
+        <a href="publications.html" class="btn btn--primary">Browse all publications</a>
+        <a href="professor.html#join" class="btn btn--ghost" style="margin-left:.5rem;">Join a project</a>
+      </p>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">
+            <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M8 10 24 8 16 24Z" stroke="#6d86a6" stroke-width="1.4" fill="none" opacity=".6"/>
+              <circle cx="8" cy="10" r="3.2" fill="#4b647f"/><circle cx="24" cy="8" r="3.2" fill="#7e96b3"/><circle cx="16" cy="24" r="3.2" fill="#9db3c9"/>
+            </svg>
+            Time-Varying Data Science Group
+          </div>
+          <p style="color:#8b94c4; font-size:.92rem; max-width:38ch;">Institute of Data and Information,<br/>Tsinghua Shenzhen International Graduate School, Shenzhen, China.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="professor.html">Professor</a>
+          <a href="projects.html">Projects</a>
+          <a href="publications.html">Publications</a>
+          <a href="people.html">People</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:kuruoglu@sz.tsinghua.edu.cn">kuruoglu@sz.tsinghua.edu.cn</a>
+          <a href="professor.html#join">Open positions</a>
+          <a href="https://scholar.google.com/citations?user=To7e1toAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year"></span> Time-Varying Data Science Group · Tsinghua SIGS</span>
+        <span>Built for research on data that changes.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
