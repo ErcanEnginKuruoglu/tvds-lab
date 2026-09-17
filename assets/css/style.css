@@ -64,7 +64,7 @@ img { max-width: 100%; display: block; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
 /* interface elements keep lining figures */
-.btn, .nav__links a, .section__eyebrow, .theme__num,
+.btn, .nav__links a, .section__eyebrow,
 .pub__badge, .masthead .eyebrow, .brand__sub { font-variant-numeric: lining-nums; }
 
 .container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 24px; }
@@ -136,11 +136,11 @@ img { max-width: 100%; display: block; }
   .nav__links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
 }
 
-/* ---------- Group photo hero + caption ---------- */
-.photohero { margin: 0; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
-.photohero img { width: 100%; height: clamp(340px, 56vh, 640px); object-fit: cover; object-position: center 28%; display: block; }
+/* ---------- Group photo hero (contained plate, no upscale) ---------- */
+.photohero { padding: 28px 0 14px; border-bottom: 1px solid var(--line); }
+.photohero figure { margin: 0; }
+.photohero img { width: 100%; height: auto; border: 1px solid var(--line); }
 .photohero figcaption { font-style: italic; color: var(--muted); font-size: .9rem; padding-top: 10px; }
-@media (max-width: 640px) { .photohero img { height: clamp(240px, 44vh, 360px); } }
 
 /* ---------- Masthead (centered nameplate) ---------- */
 .masthead { padding: 58px 0 66px; text-align: center; }
@@ -164,17 +164,15 @@ img { max-width: 100%; display: block; }
   font-family: var(--font-ui); font-size: .82rem; letter-spacing: .04em;
 }
 
-/* ---------- Research themes ---------- */
-.themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 34px; }
-@media (max-width: 760px) { .themes { grid-template-columns: 1fr; gap: 28px; } }
-.theme { border-top: 1px solid var(--ink); padding-top: 16px; }
-.theme__num {
-  font-family: var(--font-ui); color: var(--accent); font-size: .74rem;
-  font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+/* ---------- Research directions cloud ---------- */
+.cloud {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center;
+  gap: .45rem 1.9rem; max-width: 880px; margin: 36px auto 8px; text-align: center;
 }
-.theme__num::before { content: "No. "; }
-.theme h3 { margin: .5rem 0 .4rem; font-size: 1.16rem; }
-.theme p { color: var(--ink-soft); font-size: .96rem; margin: 0; }
+.cloud a { font-family: var(--font-serif); font-style: italic; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.45; }
+.cloud .cloud--md { font-style: normal; font-size: 1.35rem; color: var(--ink); }
+.cloud .cloud--lg { font-style: normal; font-size: 1.7rem; font-weight: 600; color: var(--ink); }
+.cloud a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
 
 /* ---------- Meet the team / join strips ---------- */
 .teamcta { text-align: center; }
