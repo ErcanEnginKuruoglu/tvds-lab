@@ -4,6 +4,7 @@
    ================================================================= */
 
 :root {
+  color-scheme: light;
   /* Palette — cream paper, warm ink, one oxblood accent */
   --ink: #262219;
   --ink-soft: #57503f;
@@ -29,6 +30,9 @@
 
 html { scroll-behavior: smooth; }
 
+/* keep anchor targets clear of the sticky nav */
+[id] { scroll-margin-top: 90px; }
+
 body {
   margin: 0;
   font-family: var(--font-serif);
@@ -36,12 +40,14 @@ body {
   color: var(--ink);
   background: var(--bg);
   line-height: 1.7;
+  font-variant-numeric: oldstyle-nums;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-serif); line-height: 1.18; color: var(--ink);
   margin: 0 0 .5em; font-weight: 600; letter-spacing: -0.005em;
+  text-wrap: balance;
 }
 h1 { font-size: clamp(2.1rem, 4.5vw, 3.1rem); }
 h2 { font-size: clamp(1.5rem, 2.8vw, 2rem); }
@@ -54,6 +60,12 @@ a:hover { color: var(--accent-dark); }
 img { max-width: 100%; display: block; }
 
 ::selection { background: var(--accent-soft); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* interface elements keep lining figures */
+.btn, .nav__links a, .section__eyebrow, .theme__num,
+.pub__badge, .masthead .eyebrow, .brand__sub { font-variant-numeric: lining-nums; }
 
 .container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 24px; }
 
@@ -118,7 +130,7 @@ img { max-width: 100%; display: block; }
     position: absolute; top: 68px; left: 0; right: 0;
     flex-direction: column; align-items: stretch; gap: 2px;
     background: var(--bg); border-bottom: 1px solid var(--line);
-    padding: 12px 16px;
+    padding: 12px 16px; box-shadow: 0 14px 28px -18px rgba(38, 34, 25, .35);
     transform: translateY(-12px); opacity: 0; pointer-events: none; transition: .2s;
   }
   .nav__links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
@@ -366,6 +378,22 @@ a.output:hover .output__title { color: var(--accent); }
 .pagehead h1 { color: var(--ink); margin-bottom: .4rem; }
 .pagehead p { font-style: italic; color: var(--ink-soft); font-size: 1.08rem; max-width: 64ch; margin: 0; }
 .pagehead a { color: var(--accent); text-decoration: underline; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 520px) {
+  .pub { gap: 14px; }
+  .pub__badge { width: 50px; font-size: .56rem; }
+  .project__figure { padding: 12px; }
+  .section { padding: 52px 0; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .nav, .nav__toggle, .footer, .btn, .masthead__cta, .pcard__cue { display: none !important; }
+  body { background: #fff; }
+  .photohero img { height: auto; }
+  a { color: inherit; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
