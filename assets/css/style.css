@@ -136,11 +136,11 @@ img { max-width: 100%; display: block; }
   .nav__links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
 }
 
-/* ---------- Group photo hero (contained plate, no upscale) ---------- */
-.photohero { padding: 28px 0 14px; border-bottom: 1px solid var(--line); }
-.photohero figure { margin: 0; }
-.photohero img { width: 100%; height: auto; border: 1px solid var(--line); }
+/* ---------- Group photo hero (full-bleed) ---------- */
+.photohero { margin: 0; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.photohero img { width: 100%; height: clamp(340px, 56vh, 640px); object-fit: cover; object-position: center 28%; display: block; }
 .photohero figcaption { font-style: italic; color: var(--muted); font-size: .9rem; padding-top: 10px; }
+@media (max-width: 640px) { .photohero img { height: clamp(240px, 44vh, 360px); } }
 
 /* ---------- Masthead (centered nameplate) ---------- */
 .masthead { padding: 58px 0 66px; text-align: center; }
