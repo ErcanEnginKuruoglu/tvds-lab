@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f9f6ee" />
   <meta name="google-site-verification" content="ycx8Hc_ZfYuuTNWqexa-JQaG-V-QpA_6OVndm44Y0Ho" />
   <title>Time-Varying Data Science Group — Tsinghua SIGS</title>
-  <meta name="description" content="The Time-Varying Data Science (TVDS) Group at Tsinghua Shenzhen International Graduate School, led by Prof. Ercan E. Kuruoglu. Bayesian learning, graph signal processing, and statistical signal processing for time-evolving data." />
+  <meta name="description" content="The Time-Varying Data Science (TVDS) Group at Tsinghua Shenzhen International Graduate School, led by Prof. Ercan E. Kuruoglu. A team of students and researchers working on Bayesian learning, graph signal processing, and statistical methods for time-evolving data." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='8' cy='10' r='3' fill='%2336506e'/%3E%3Ccircle cx='24' cy='8' r='3' fill='%2346607e'/%3E%3Ccircle cx='16' cy='24' r='3' fill='%235e7c97'/%3E%3Cpath d='M8 10 24 8 16 24Z' stroke='%2336506e' stroke-width='1.2' fill='none' opacity='.5'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='8' cy='10' r='3' fill='%23262219'/%3E%3Ccircle cx='24' cy='8' r='3' fill='%237b2d26'/%3E%3Ccircle cx='16' cy='24' r='3' fill='%238b8272'/%3E%3Cpath d='M8 10 24 8 16 24Z' stroke='%23262219' stroke-width='1.2' fill='none' opacity='.5'/%3E%3C/svg%3E" />
 </head>
 <body>
 
@@ -19,10 +20,10 @@
     <div class="container nav__inner">
       <a href="index.html" class="brand">
         <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M8 10 24 8 16 24Z" stroke="#36506e" stroke-width="1.4" fill="none" opacity=".5"/>
-          <circle cx="8" cy="10" r="3.2" fill="#36506e"/>
-          <circle cx="24" cy="8" r="3.2" fill="#46607e"/>
-          <circle cx="16" cy="24" r="3.2" fill="#5e7c97"/>
+          <path d="M8 10 24 8 16 24Z" stroke="#262219" stroke-width="1.4" fill="none" opacity=".5"/>
+          <circle cx="8" cy="10" r="3.2" fill="#262219"/>
+          <circle cx="24" cy="8" r="3.2" fill="#7b2d26"/>
+          <circle cx="16" cy="24" r="3.2" fill="#8b8272"/>
         </svg>
         <span>TVDS Group<span class="brand__sub">Tsinghua SIGS</span></span>
       </a>
@@ -38,97 +39,119 @@
     </div>
   </nav>
 
-  <!-- ============ HERO ============ -->
-  <!-- The lab group photo is the hero background — swap assets/img/group-photo.jpg to change it. -->
-  <header class="hero" style="background-image:url('assets/img/group-photo.jpg');">
-    <div class="container hero__inner">
-      <h1>Learning from data that <span class="text-gradient">changes over time</span>.</h1>
-      <p class="hero__lead">
-        We develop Bayesian, statistical, and graph-based methods to model, predict,
-        and understand signals that evolve across time and over networks.
-      </p>
-      <div class="hero__cta">
-        <a href="#research" class="btn btn--primary">Explore our research</a>
-        <a href="professor.html#join" class="btn btn--ghost">Join the lab</a>
+  <!-- ============ GROUP PHOTO HERO ============ -->
+  <figure class="photohero">
+    <img src="assets/img/group-photo.jpg" fetchpriority="high" alt="The Time-Varying Data Science Group at Tsinghua SIGS" />
+    <figcaption class="container">The Time-Varying Data Science Group at Tsinghua Shenzhen International Graduate School.</figcaption>
+  </figure>
+
+  <!-- ============ MASTHEAD ============ -->
+  <header class="masthead">
+    <div class="container">
+      <div class="masthead__inner">
+        <p class="eyebrow">Tsinghua SIGS · Institute of Data and Information</p>
+        <h1>Learning from data that changes over time.</h1>
+        <p class="masthead__lead">
+          The Time-Varying Data Science Group is a team of students and researchers,
+          led by Prof. <a href="professor.html">Ercan E. Kuruoglu</a>, building statistical,
+          Bayesian, and graph-based methods for data that evolves — across time and over networks.
+        </p>
+        <div class="masthead__cta">
+          <a href="projects.html" class="btn btn--primary">Explore student projects</a>
+          <a href="people.html" class="btn btn--ghost">Meet the team</a>
+        </div>
+        <p class="masthead__affil">Tsinghua Shenzhen International Graduate School · Shenzhen, China</p>
       </div>
-      <p class="hero__affil">Institute of Data and Information · Tsinghua Shenzhen International Graduate School</p>
     </div>
   </header>
 
-  <!-- ============ INTRO ============ -->
-  <section class="section">
-    <div class="container" style="max-width:760px;">
-      <div class="reveal">
-        <p class="section__eyebrow">About the group</p>
-        <h2>A research group built around the dimension of time.</h2>
-        <p class="section__lead">
-          The Time-Varying Data Science (TVDS) Group studies how to reason about data whose
-          structure and statistics are non-stationary — changing as time passes and as the
-          relationships between entities evolve. Led by Prof. Ercan E. Kuruoglu, we bring together
-          statistical signal processing, Bayesian learning, and graph machine learning to build
-          models that are robust, interpretable, and aware of uncertainty.
-        </p>
-        <p class="section__lead">
-          Our methods are applied to climate, financial, genomic, and remote-sensing data, where
-          understanding change is the whole point.
-        </p>
-        <div class="tags" style="margin-top:18px;">
-          <span class="tag">Heavy-Tailed Distributions</span>
-          <span class="tag">Bayesian Learning</span>
-          <span class="tag">Graph Signal Processing</span>
-          <span class="tag">Statistical Signal Processing</span>
-          <span class="tag">Topological Data Analysis</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ RESEARCH AREAS ============ -->
-  <section class="section section--soft" id="research">
+  <!-- ============ RESEARCH DIRECTIONS ============ -->
+  <section class="section section--soft">
     <div class="container">
-      <div class="reveal" style="margin-bottom:28px;">
-        <p class="section__eyebrow">Our projects</p>
-        <h2>What we're building</h2>
-        <p class="section__lead">A map of our work: larger circles are research directions that span several projects, and each connects out to the individual projects it drives. Select any node to explore.</p>
-      </div>
-
-      <!-- Graph is built by assets/js/main.js from a single data source. -->
-      <div class="research-graph reveal" id="researchGraph" role="group" aria-label="Research directions graph"></div>
-      <div class="research-list" id="researchList"></div>
+      <p class="section__eyebrow">What we work on</p>
+      <h2>Research directions.</h2>
+      <p class="section__lead">One idea — modelling change — pursued across many threads. Follow any of them to the projects behind it.</p>
+      <nav class="cloud" aria-label="Research directions">
+        <a class="cloud--lg" href="projects.html#heavy-tailed">α-Stable &amp; Heavy-Tailed Learning</a>
+        <a class="cloud--md" href="projects.html#graph-signals">Time-Varying Graph Signals</a>
+        <a href="projects.html#bayesian-uncertainty">Bayesian Uncertainty</a>
+        <a class="cloud--md" href="projects.html#losc">Functional Brain Networks</a>
+        <a href="projects.html#efficient-dl">Efficient Deep Learning</a>
+        <a class="cloud--lg" href="projects.html#representation-learning">Representation Learning</a>
+        <a href="projects.html#cancer-genomics">Topological Cancer Genomics</a>
+        <a class="cloud--md" href="projects.html#hb-gib">Brain Graph Information Bottlenecks</a>
+        <a href="projects.html#financial-risk">Heavy Tails &amp; Financial Risk</a>
+      </nav>
     </div>
   </section>
 
-  <!-- ============ BLACK SWAN / HEAVY TAILS ============ -->
-  <section class="section" id="blackswan">
-    <div class="container swan-demo">
-      <div class="reveal">
-        <p class="section__eyebrow">Heavy tails &amp; black swans</p>
-        <h2>Expecting the unexpected.</h2>
-        <p class="section__lead">
-          Most models assume the world is Gaussian — that extremes are vanishingly rare.
-          Real data disagrees: market crashes, atmospheric bursts, and impulsive noise are
-          <em>black swans</em>, events far larger than a bell curve would ever predict.
-        </p>
-        <p class="section__lead">
-          Much of our work builds on α-stable distributions and dynamic statistics —
-          models that take heavy tails seriously, so the rare event is part of the theory
-          rather than an outlier to be discarded.
-        </p>
-        <a href="publications.html?topic=heavy-tails" class="btn btn--ghost">Heavy-tail publications →</a>
+  <!-- ============ STUDENT PROJECTS ============ -->
+  <section class="section">
+    <div class="container">
+      <p class="section__eyebrow">Student projects</p>
+      <h2>What our students are building.</h2>
+      <p class="section__lead">
+        The research is led by the students of the group. Here are four of their current projects.
+      </p>
+
+      <div class="pcards">
+        <a class="pcard" href="projects.html#heavy-tailed">
+          <span class="pcard__area">Heavy-Tailed Statistics</span>
+          <span class="pcard__title">α-Stable Learning &amp; Non-Gaussian Processes</span>
+          <span class="pcard__people">Bo Shu · Jipeng Li</span>
+          <span class="pcard__desc">α-stable and non-Gaussian models for heavy-tailed, impulsive data — from robust Bayesian inference to the structure of neural-network weights.</span>
+          <span class="pcard__cue">Read more →</span>
+        </a>
+
+        <a class="pcard" href="projects.html#representation-learning">
+          <span class="pcard__area">Representation Learning</span>
+          <span class="pcard__title">Structured &amp; Efficient Representation Learning</span>
+          <span class="pcard__people">Chengfeng Wu</span>
+          <span class="pcard__desc">Representations that separate task-relevant semantics from nuisance, with efficient temporal aggregation on dynamic graphs.</span>
+          <span class="pcard__cue">Read more →</span>
+        </a>
+
+        <a class="pcard" href="projects.html#losc">
+          <span class="pcard__area">Brain Network Learning</span>
+          <span class="pcard__title">LOSC — Learning Optimal Spectral Clustering</span>
+          <span class="pcard__people">Functional brain networks</span>
+          <span class="pcard__desc">A graph-theory-grounded framework that exploits the small-world topology of functional brain networks for more accurate, interpretable classification.</span>
+          <span class="pcard__cue">Read more →</span>
+        </a>
+
+        <a class="pcard" href="projects.html#hb-gib">
+          <span class="pcard__area">Brain Network Learning</span>
+          <span class="pcard__title">HB-GIB — Hierarchical Brain Graph Information Bottleneck</span>
+          <span class="pcard__people">Functional brain networks</span>
+          <span class="pcard__desc">A community-level information bottleneck that preserves biologically meaningful brain structure while capturing cross-community interactions.</span>
+          <span class="pcard__cue">Read more →</span>
+        </a>
       </div>
-      <div class="swan-demo__card reveal" id="swanDemo">
-        <div class="swan-demo__head">
-          <label for="alphaSlider">Tail index α = <span id="alphaVal">1.7</span></label>
-        </div>
-        <input type="range" id="alphaSlider" min="1.1" max="2" step="0.05" value="1.7" aria-label="Tail index alpha" />
-        <div class="swan-demo__scale"><span>← heavy tails</span><span>Gaussian →</span></div>
-        <canvas id="swanCanvas" aria-label="Live samples from an alpha-stable distribution, scaled so alpha equals 2 is a standard Gaussian; any value beyond 3 standard deviations is marked with a black swan"></canvas>
-        <div class="swan-demo__foot">
-          <span class="swan-icon" aria-hidden="true"></span>
-          <span>Black swans observed: <strong id="swanCount">0</strong></span>
-          <span class="swan-demo__hint">A black swan is any sample beyond 3σ — a 1-in-370 event if the world were truly Gaussian. Drag α down and watch them multiply.</span>
-        </div>
-      </div>
+
+      <p style="margin-top:32px;">
+        <a href="projects.html" class="btn btn--primary">All projects</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ MEET THE TEAM ============ -->
+  <section class="section teamcta">
+    <div class="container">
+      <p class="section__eyebrow">The people behind the work</p>
+      <h2>A close-knit group of curious researchers.</h2>
+      <p class="section__lead">Doctoral and master's students, postdocs, and alumni — the full roster, with what each is working on.</p>
+      <p style="margin-top:24px;">
+        <a href="people.html" class="btn btn--primary">Meet the team</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ JOIN ============ -->
+  <section class="section section--soft">
+    <div class="container joinstrip">
+      <h2>Interested in joining?</h2>
+      <p>We regularly recruit PhD students, postdocs, and visiting scholars with strong mathematical foundations and an interest in statistical and probabilistic methods.</p>
+      <a href="professor.html#join" class="btn btn--primary">Open positions &amp; how to apply</a>
     </div>
   </section>
 
@@ -139,12 +162,12 @@
         <div>
           <div class="footer__brand">
             <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
-              <path d="M8 10 24 8 16 24Z" stroke="#6d86a6" stroke-width="1.4" fill="none" opacity=".6"/>
-              <circle cx="8" cy="10" r="3.2" fill="#4b647f"/><circle cx="24" cy="8" r="3.2" fill="#7e96b3"/><circle cx="16" cy="24" r="3.2" fill="#9db3c9"/>
+              <path d="M8 10 24 8 16 24Z" stroke="#262219" stroke-width="1.4" fill="none" opacity=".6"/>
+              <circle cx="8" cy="10" r="3.2" fill="#262219"/><circle cx="24" cy="8" r="3.2" fill="#7b2d26"/><circle cx="16" cy="24" r="3.2" fill="#8b8272"/>
             </svg>
             Time-Varying Data Science Group
           </div>
-          <p style="color:#8b94c4; font-size:.92rem; max-width:38ch;">Institute of Data and Information,<br/>Tsinghua Shenzhen International Graduate School, Shenzhen, China.</p>
+          <p>Institute of Data and Information,<br/>Tsinghua Shenzhen International Graduate School, Shenzhen, China.</p>
         </div>
         <div>
           <h4>Explore</h4>
